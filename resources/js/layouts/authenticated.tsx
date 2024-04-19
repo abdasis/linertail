@@ -5,12 +5,13 @@ import NavLink from '@/components/nav-link';
 import ResponsiveNavLink from '@/components/responsive-nav-link';
 import { Link } from '@inertiajs/react';
 import { User } from '@/types';
+import {ModeToggle} from "@/components/mode-toggle";
 
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-800">
             <nav className="bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
@@ -20,6 +21,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
+
+                            <ModeToggle/>
+
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
